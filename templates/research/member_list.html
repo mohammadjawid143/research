@@ -1,0 +1,47 @@
+﻿{% extends 'base.html' %}
+{% block title %}اعضای پروژه{% endblock %}
+{% block content %}
+<div class="container py-4">
+  <h3 class="mb-3 text-right">👥 اعضای پژوهش</h3>
+  <div class="text-right">
+    <a href="{% url 'member_create' %}" class="btn btn-primary mb-3"> افزودن عضو<i class="fa-solid fa-plus"></i></a>
+  </div>
+  {% if members %}
+    <div class="table-responsive">
+      <table class="table table-striped text-right">
+        <thead class="thead-light">
+          <tr>
+            <th>پروژه</th>
+            <th>کاربر</th>
+            <th>نقش</th>
+            <th>تاریخ عضویت</th>
+            <th class="text-center">عملیات</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for member in members %}
+            <tr>
+              <td>{{ member.project.title }}</td>
+              <td>
+                {% if member.user.first_name or member.user.last_name %}
+                  {{ member.user.first_name }} {{ member.user.last_name }}
+                {% else %}
+                  {{ member.user.email }}
+                {% endif %}
+              </td>
+              <td>{{ member.role }}</td>
+              <td>{{ member.joined_at|date:"Y-m-d" }}</td>
+              <td class="text-center">
+                <a href="{% url 'member_update' member.id %}" class="btn btn-sm btn-warning">ویرایش</a>
+                <a href="{% url 'member_delete' member.id %}" class="btn btn-sm btn-danger">حذف</a>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% else %}
+    <div class="alert alert-info text-right">هیچ عضوی ثبت نشده است.</div>
+  {% endif %}
+</div>
+{% endblock %}

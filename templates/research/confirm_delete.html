@@ -1,0 +1,14 @@
+﻿{% extends 'base.html' %}
+{% block title %}حذف{% endblock %}
+{% block content %}
+<div class="container py-4">
+  <div class="alert alert-danger text-right" role="alert">
+    <h4 class="alert-heading mb-3">آیا مطمئن هستید که «{{ object }}» حذف شود؟</h4>
+    <form method="post" class="d-inline">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-danger">بله، حذف شود</button>
+    </form>
+    <a href="javascript:history.back()" class="btn btn-secondary mr-2">خیر، بازگشت</a>
+  </div>
+</div>
+{% endblock %}

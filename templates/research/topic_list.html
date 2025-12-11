@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}موضوعات{% endblock %}
+{% block content %}
+<div class="container py-4">
+  <h3 class="mb-3 text-right">🗂 موضوعات تحقیق</h3>
+  <div class="text-right">
+    <a href="{% url 'topic_create' %}" class="btn btn-primary mb-3"> موضوع جدید<i class="fa-solid fa-plus"></i></a>
+  </div>
+  <div class="table-responsive">
+    <table class="table table-striped text-right">
+      <thead class="thead-light">
+        <tr>
+          <th>عنوان</th>
+          <th>پروژه</th>
+          <th>تاریخ ایجاد</th>
+          <th class="text-center">عملیات</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for topic in topics %}
+          <tr>
+            <td>{{ topic.title }}</td>
+            <td>{{ topic.project.title }}</td>
+            <td>{{ topic.created_at|date:"Y-m-d" }}</td>
+            <td class="text-center">
+              <a href="{% url 'topic_update' topic.id %}" class="btn btn-sm btn-warning">ویرایش</a>
+              <a href="{% url 'topic_delete' topic.id %}" class="btn btn-sm btn-danger">حذف</a>
+            </td>
+          </tr>
+        {% empty %}
+          <tr>
+            <td colspan="4" class="text-center text-muted">هیچ موضوعی ثبت نشده است.</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

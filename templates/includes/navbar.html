@@ -1,0 +1,37 @@
+﻿{% load static %}
+{% with match=request.resolver_match %}
+{% with current=match.url_name|default:'' %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary text-right nev_1">
+  <div class="container">
+    <a class="navbar-brand nav-home-pill {% if current == 'home' %}active{% endif %}" href="{% url 'home' %}">خانه</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="باز و بسته کردن منو">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="mainNavbar">
+      <div class="nav-collapse-inner">
+        <ul class="navbar-nav align-items-center text-right">
+          {% if user.is_authenticated %}
+          <li class="nav-item"><a class="nav-link nav-pill {% if current == 'project_list' %}active{% endif %}" href="{% url 'project_list' %}">پروژه‌ها</a></li>
+          <li class="nav-item"><a class="nav-link nav-pill {% if current == 'topic_list' %}active{% endif %}" href="{% url 'topic_list' %}">موضوعات</a></li>
+          <li class="nav-item"><a class="nav-link nav-pill {% if current == 'note_list' %}active{% endif %}" href="{% url 'note_list' %}">فیش‌ها</a></li>
+          <li class="nav-item"><a class="nav-link nav-pill {% if current == 'source_list' %}active{% endif %}" href="{% url 'source_list' %}">منابع</a></li>
+          <li class="nav-item"><a class="nav-link nav-pill {% if current == 'keyword_list' %}active{% endif %}" href="{% url 'keyword_list' %}">کلیدواژه‌ها</a></li>
+          <li class="nav-item"><a class="nav-link nav-pill {% if current == 'member_list' %}active{% endif %}" href="{% url 'member_list' %}">اعضا</a></li>
+          <li class="nav-item d-lg-none mt-2">
+            <a class="btn btn-sm btn-outline-light w-100" href="{% url 'logout' %}">خروج از حساب</a>
+          </li>
+          {% else %}
+          <li class="nav-item"><a class="nav-link nav-pill {% if current == 'registerUser' %}active{% endif %}" href="{% url 'registerUser' %}">ثبت‌نام</a></li>
+          <li class="nav-item"><a class="nav-link nav-pill {% if current == 'login' %}active{% endif %}" href="{% url 'login' %}">ورود</a></li>
+          {% endif %}
+        </ul>
+        {% if user.is_authenticated %}
+          <a class="nav-link nav-pill logout-pill nav-logout-link d-none d-lg-inline-block" href="{% url 'logout' %}">خروج از حساب</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</nav>
+{% endwith %}
+{% endwith %}

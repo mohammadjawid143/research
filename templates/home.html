@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="py-5 container">
+  <div class="text-center mb-5">
+    <h2 class="mb-3">سامانه مدیریت پژوهش</h2>
+    <p class="lead">قدم‌ به‌ قدم اطلاعات پژوهش خود را ثبت و مدیریت کنید و هیچ نکته‌ای را از دست ندهید.</p>
+  </div>
+
+  <div class="row g-4">
+    <div class="col-md-6 col-lg-4">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body text-center">
+          <div class="display-4 text-primary mb-3">۱</div>
+          <h5 class="card-title">پروژه تحقیقاتی</h5>
+          <p class="card-text">ابتدا پروژه یا طرح پژوهشی خود را ثبت کنید تا ساختار کلی کار مشخص شود.</p>
+        </div>
+        <div class="card-footer bg-transparent text-center">
+          <a href="{% url 'project_list' %}" class="btn btn-primary w-100">مدیریت پروژه‌ها</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-4 pt-20">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body text-center">
+          <div class="display-4 text-primary mb-3">۲</div>
+          <h5 class="card-title">موضوعات و منابع</h5>
+          <p class="card-text">برای هر پروژه، موضوع‌های دقیق و منابع معتبر را اضافه کنید تا مسیر پژوهش روشن شود.</p>
+        </div>
+        <div class="card-footer bg-transparent text-center">
+          <a href="{% url 'topic_list' %}" class="btn btn-outline-primary w-100 mb-2">مدیریت موضوعات</a>
+          <a href="{% url 'source_list' %}" class="btn btn-outline-primary w-100">مدیریت منابع</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-4">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body text-center">
+          <div class="display-4 text-primary mb-3">۳</div>
+          <h5 class="card-title">فیش‌ها و کلیدواژه‌ها</h5>
+          <p class="card-text">فیش‌های تحقیقاتی خود را ثبت و با کلیدواژه‌های مناسب دسته‌بندی کنید تا دسترسی سریعی داشته باشید.</p>
+        </div>
+        <div class="card-footer bg-transparent text-center">
+          <a href="{% url 'note_list' %}" class="btn btn-outline-primary w-100 mb-2">مدیریت فیش‌ها</a>
+          <a href="{% url 'keyword_list' %}" class="btn btn-outline-primary w-100">مدیریت کلیدواژه‌ها</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row g-4 mt-5 justify-content-center ml-1 ">
+    <div class="col-md-6 col-lg-4 ">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body text-center">
+          <div class="display-4 text-primary mb-3">۴</div>
+          <h5 class="card-title">اعضای پژوهش</h5>
+          <p class="card-text">نقش خود و اعضای تیم را برای هر پروژه مشخص کنید تا همکاری هماهنگ داشته باشید.</p>
+        </div>
+        <div class="card-footer bg-transparent text-center">
+          <a href="{% url 'member_list' %}" class="btn btn-outline-primary w-100">مدیریت اعضا</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+

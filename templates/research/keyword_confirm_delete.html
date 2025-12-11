@@ -1,0 +1,15 @@
+﻿{% extends 'base.html' %}
+{% block title %}حذف کلیدواژه{% endblock %}
+{% block content %}
+<div class="container py-4">
+  <div class="alert alert-warning text-right" role="alert">
+    <h4 class="alert-heading mb-3">حذف کلیدواژه</h4>
+    <p>آیا از حذف «{{ keyword.name }}» مطمئن هستید؟</p>
+    <form method="post" class="d-inline">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-danger">بله، حذف شود</button>
+    </form>
+    <a href="{% url 'keyword_list' %}" class="btn btn-secondary mr-2">بازگشت</a>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %}فیش‌ها{% endblock %}
+{% block content %}
+<div class="container py-4">
+  <h3 class="mb-3 text-right">📝 فیش‌های تحقیقاتی</h3>
+  <div class="text-right">
+    <a href="{% url 'note_create' %}" class="btn btn-primary mb-3"> فیش جدید <i class="fa-solid fa-plus"></i></a>
+  </div>
+  <div class="table-responsive">
+    <table class="table table-striped text-right">
+      <thead class="thead-light">
+        <tr>
+          <th>عنوان</th>
+          <th>موضوع</th>
+          <th>نوع</th>
+          <th>وضعیت</th>
+          <th class="text-center">عملیات</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for note in notes %}
+          <tr>
+            <td>{{ note.title }}</td>
+            <td>{{ note.topic.title }}</td>
+            <td>{{ note.get_note_type_display }}</td>
+            <td>{{ note.get_status_display }}</td>
+            <td class="text-center">
+              <a href="{% url 'note_update' note.id %}" class="btn btn-sm btn-warning">ویرایش</a>
+              <a href="{% url 'note_delete' note.id %}" class="btn btn-sm btn-danger">حذف</a>
+            </td>
+          </tr>
+        {% empty %}
+          <tr>
+            <td colspan="5" class="text-center text-muted">هیچ فیـشی ثبت نشده است.</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

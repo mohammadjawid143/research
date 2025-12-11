@@ -1,0 +1,54 @@
+{%  load static %}
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>{% block title %}Research{% endblock %}</title>
+	{% block extra_css %}
+	<link href="{% static 'css/iconmoon.css' %}" rel="stylesheet">
+	<link href="{% static 'css/style.css' %}" rel="stylesheet">
+	<link href="{% static 'css/cs-foodbakery-plugin.css' %}" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link href="{% static 'css/custom.css' %}?v=202501" rel="stylesheet">
+	<link href="{% static 'css/custom_fonts.css' %}?v=202501" rel="stylesheet">
+
+	<link href="{% static 'css/errors.css' %}" rel="stylesheet">
+	<!-- cdn for font awesome --> 
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+	{% endblock %}
+	
+	<!-- JAVASCRIPT -->
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script src="{% static 'js/custom.js' %}?v=202501"></script>
+	{% block extra_js_head %}{% endblock %}
+
+	<style>
+		:root {
+			font-family: "Yekan", sans-serif;
+		}
+		body,
+		body *:not(i) {
+			font-family: "Yekan", sans-serif !important;
+		}
+	</style>
+</head>
+
+<body>
+
+
+    <!-- LOAD NAVEBAR HERE-->
+    {% include 'includes/navbar.html'%}
+
+    {% block content %}{% endblock %}
+		
+
+
+    <!-- LOAD FOTTER HERE -->
+     {% include 'includes/footer.html'%}
+
+	

@@ -1,0 +1,82 @@
+{% load static %}
+
+<!-- Sidebar -->
+<div class="d-flex flex-column flex-shrink-0 p-3 bg-light border-end" 
+     style="width: 250px; height: 100vh; position: fixed; right: 0; top: 0; overflow-y: auto; text-align: right;">
+
+    <a href="{% url 'project_list' %}" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+        <img src="{% static 'images/logo.png' %}" alt="Logo" width="36" height="36" class="me-2">
+        <span class="fs-5 fw-bold">فیش تحقیقاتی</span>
+    </a>
+    <hr>
+
+    <ul class="nav nav-pills flex-column mb-auto">
+        <li class="nav-item">
+            <a href="{% url 'project_list' %}" class="nav-link link-dark">
+                🧩 پروژه‌ها
+            </a>
+        </li>
+
+        <!-- موضوعات (بدون ارور) -->
+        <li>
+            <a href="{% url 'project_list' %}" class="nav-link link-dark" 
+               title="ابتدا یک پروژه انتخاب کنید">
+                📚 موضوعات
+            </a>
+        </li>
+
+        <!-- فیش‌ها (بدون ارور) -->
+        <li>
+            <a href="{% url 'project_list' %}" class="nav-link link-dark" 
+               title="ابتدا یک موضوع انتخاب کنید">
+                🗒️ فیش‌ها
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'source_list' %}" class="nav-link link-dark">
+                📖 منابع
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'keyword_list' %}" class="nav-link link-dark">
+                🔑 کلیدواژه‌ها
+            </a>
+        </li>
+
+        {% comment %} اگر view اعضا داری {% endcomment %}
+        {% if request.user.is_authenticated %}
+        <li>
+            <a href="{% url 'member_list' %}" class="nav-link link-dark">
+                👥 اعضا
+            </a>
+        </li>
+        {% endif %}
+
+        <li>
+            {% comment %} <a href="{% url 'myAccount' %}" class="nav-link link-dark">
+                ⚙️ حساب من
+            </a> {% endcomment %}
+        </li>
+    </ul>
+
+    <hr>
+    <div class="dropdown text-end">
+        <a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle" id="dropdownUser"
+           data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="{% static 'images/user.png' %}" alt="User" width="32" height="32" class="rounded-circle me-2">
+            <strong>{{ request.user.first_name|default:'کاربر' }}</strong>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end text-small shadow" aria-labelledby="dropdownUser">
+            {% if request.user.is_authenticated %}
+                {% comment %} <li><a class="dropdown-item" href="{% url 'myAccount' %}">پروفایل</a></li> {% endcomment %}
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item text-danger" href="{% url 'logout' %}">خروج</a></li>
+            {% else %}
+                <li><a class="dropdown-item" href="{% url 'login' %}">ورود</a></li>
+                <li><a class="dropdown-item" href="{% url 'registerUser' %}">ثبت‌ نام</a></li>
+            {% endif %}
+        </ul>
+    </div>
+</div>
